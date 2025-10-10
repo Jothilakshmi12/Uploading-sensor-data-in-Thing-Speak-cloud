@@ -1,4 +1,6 @@
 # Uploading temperature sensor data in Thing Speak cloud
+## Name: JOTHILAKSHMI PALANI
+## RegNo: 212223110017
 
 # AIM:
 To monitor the temperature sensor data in the Thing speak using an ESP32 controller.

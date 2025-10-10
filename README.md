@@ -73,12 +73,79 @@ Automatically act on your data and communicate using third-party services like T
 
 
 # PROGRAM:
+```
+#include "ThingSpeak.h"
+#include <WiFi.h>
+#include "DHT.h"
+
+char ssid[] = "JO";
+char pass[] = "12345678";
+const int out=2;
+float temp=0;
+float humidity=0;
+WiFiClient client;
+DHT dht(out,DHT11);
+
+unsigned long myChannelField = 3108874;
+const int TemperatureField = 1;
+const int HumidityField = 2;
+const char* myWriteAPIKey = "X6K17IB9IT4IGVYO";
+void setup() {
+  // put your setup code here, to run once:
+  dht.begin();
+  ThingSpeak.begin(client);
+  Serial.begin(115200);//communication speed
+  pinMode(out,INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if (WiFi.status() != WL_CONNECTED){
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+  while (WiFi.status()!= WL_CONNECTED){
+      WiFi.begin(ssid, pass) ;
+      Serial.print(".");
+      delay(5000);
+  }
+Serial.println("\nConnected.");
+  }
+
+  temp=dht.readTemperature();
+  humidity=dht.readHumidity();
+
+  Serial.print("Temperature: ");
+  Serial.print(temp);
+  Serial.println(" C");
+
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.println(" unit");
+
+  ThingSpeak.setField(TemperatureField,temp);
+  ThingSpeak.setField(HumidityField,humidity);
+  ThingSpeak.writeFields(myChannelField, myWriteAPIKey);
+  delay(1000);
+}
+```
 
 # CIRCUIT DIAGRAM:
 
+# Circuit:
+
+![piot3exoutput](https://github.com/user-attachments/assets/210d81b9-025e-4dc3-9a6f-32021ef1c382)
+
+
 # OUTPUT:
+
+<img width="1612" height="905" alt="Screenshot 2025-10-10 110702" src="https://github.com/user-attachments/assets/b6c4b96c-3683-4a83-abda-2b6c1a45184f" />
+
+
+
+![WhatsApp Image 2025-10-10 at 11 19 12_3b366d08](https://github.com/user-attachments/assets/90ec37d3-c461-44a7-91e2-53e6c38cfc69)
+
 
 # RESULT:
 
-Thus the temperature sensor values are updated in the Thing speak using ESP32 controller.
+Thus, the temperature sensor values are updated in the Thing speak using ESP32 controller.
 

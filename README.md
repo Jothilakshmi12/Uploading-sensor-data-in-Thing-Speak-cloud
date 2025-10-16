@@ -1,6 +1,8 @@
-# Uploading temperature sensor data in Thing Speak cloud
-## Name: JOTHILAKSHMI PALANI
-## RegNo: 212223110017
+# Name: JOTHILAKSHMI PALANI
+# RegNo: 212223110017
+
+# EX:3- Uploading temperature sensor data in Thing Speak cloud
+
 
 # AIM:
 To monitor the temperature sensor data in the Thing speak using an ESP32 controller.
@@ -138,9 +140,11 @@ Serial.println("\nConnected.");
 
 # OUTPUT:
 
+## Thingspeak Interface:
+
 <img width="1612" height="905" alt="Screenshot 2025-10-10 110702" src="https://github.com/user-attachments/assets/b6c4b96c-3683-4a83-abda-2b6c1a45184f" />
 
-
+## Serial Monitor:
 
 ![WhatsApp Image 2025-10-10 at 11 19 12_3b366d08](https://github.com/user-attachments/assets/90ec37d3-c461-44a7-91e2-53e6c38cfc69)
 
